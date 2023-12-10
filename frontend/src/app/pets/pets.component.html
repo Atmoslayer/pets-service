@@ -1,8 +1,5 @@
 <body>
-<div class="header">
-  <h2 class="title_text">Ваши животные</h2>
-</div>
-<div class="pets" *ngIf="hasPets; else noPets">
+<section class="pets" *ngIf="hasPets; else noPets">
   <div *ngFor="let pet of pets">
     <div class="current_pet" (click)="petClicked(pet)">
       <span>{{pet.type}} </span>
@@ -11,33 +8,35 @@
       <span>- редактировать </span>
     </div>
   </div>
-</div>
-<ng-template  #noPets>
+</section>
+<ng-template  class="no_pets" #noPets>
   <div class="no_pet" >
     <span class="no_pet_title">У вас нет животных, зарегистрируйте нового!</span>
   </div>
 </ng-template>
-<div class="form">
-  <h1 class="form_title">Редактирование питомца</h1>
-  <div class="form__group">
-    <input type="text" [(ngModel)]="selectedPet.name" class="form__input" placeholder=" ">
-    <label class="form__label">Кличка</label>
+<section class="form_section">
+  <div class="form">
+    <h1 class="form_title">Редактирование питомца</h1>
+    <div class="form__group">
+      <input type="text" [(ngModel)]="selectedPet.name" class="form__input" placeholder=" ">
+      <label class="form__label">Кличка</label>
+    </div>
+    <div class="form__group">
+      <input type="text" [(ngModel)]="selectedPet.type" class="form__input" placeholder=" ">
+      <label class="form__label">Вид питомца</label>
+    </div>
+    <div class="form__group">
+      <input type="text" [(ngModel)]="selectedPet.breed" class="form__input" placeholder=" ">
+      <label class="form__label">Порода</label>
+    </div>
+    <div class="form__group">
+      <input type="text" [(ngModel)]="selectedPet.age" class="form__input" placeholder=" ">
+      <label class="form__label">Возраст</label>
+    </div>
+    <button *ngIf="selectedPet.id != -2" class="edit__button" (click)="updatePet(); reloadPage()">Редактировать</button>
+    <button *ngIf="selectedPet.id == -2" class="create__button" (click)="createPet(); reloadPage()">Создать</button>
+    <button *ngIf="selectedPet.id != -2" class="delete__button" (click)="deletePet(); reloadPage()">Удалить</button>
+    <button class="exit__button" type="button" (click)="logout(); goToLogin()">Выйти</button>
   </div>
-  <div class="form__group">
-    <input type="text" [(ngModel)]="selectedPet.type" class="form__input" placeholder=" ">
-    <label class="form__label">Вид питомца</label>
-  </div>
-  <div class="form__group">
-    <input type="text" [(ngModel)]="selectedPet.breed" class="form__input" placeholder=" ">
-    <label class="form__label">Порода</label>
-  </div>
-  <div class="form__group">
-    <input type="text" [(ngModel)]="selectedPet.age" class="form__input" placeholder=" ">
-    <label class="form__label">Возраст</label>
-  </div>
-  <button *ngIf="selectedPet.id != -2" class="edit__button" (click)="updatePet(); reloadPage()">Редактировать</button>
-  <button *ngIf="selectedPet.id == -2" class="create__button" (click)="createPet(); reloadPage()">Создать</button>
-  <button *ngIf="selectedPet.id != -2" class="delete__button" (click)="deletePet(); reloadPage()">Удалить</button>
-  <button class="exit__button" type="button" (click)="logout(); goToLogin()">Выйти</button>
-</div>
+</section>
 </body>

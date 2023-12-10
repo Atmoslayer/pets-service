@@ -6,43 +6,46 @@ body {
   height: 20mm;
 }
 
-/*.header {*/
-/*  margin-top: 50px;*/
-/*  margin-left: auto;*/
-/*  margin-right: auto;*/
-/*}*/
+.header {
+  margin-top: 50px;
+}
 
+.title_text {
+  text-align: center;
+  font-family: sans-serif;
+  letter-spacing: 1px;
+}
 
+.no_pet, .pet {
+  margin-top: 300px;
+  margin-right: 20px;
+}
 
-/*.title_text {*/
-/*  text-align: center;*/
-/*  font-family: sans-serif;*/
-/*  letter-spacing: 1px;*/
-/*}*/
+.title_text {
+  text-align: center;
+  font-family: sans-serif;
+  letter-spacing: 1px;
+  padding-bottom: 10px;
+}
 
-/*.no_pet {*/
-/*  margin-top: 150px;*/
-/*}*/
-
-
-/*.title_text {*/
-/*  text-align: center;*/
-/*  font-family: sans-serif;*/
-/*  letter-spacing: 1px;*/
-/*  padding-bottom: 10px;*/
-/*}*/
-
-/*.pets, no_pet_title {*/
-/*  margin-left: -200px;*/
-/*  margin-top: 100px;*/
-/*}*/
+.current_pet {
+  margin-top: 100px;
+  width: 350px;
+  height: 400px;
+  padding-top: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px #ccc;
+  font-family: sans-serif;
+  letter-spacing: 1px;
+}
 
 .current_pet {
   cursor: pointer;
 }
 
 .form {
-  margin-top: 200px;
+  margin-top: 100px;
+  margin-rleft: 10px;
   width: 350px;
   height: 400px;
   padding-top: 30px;
