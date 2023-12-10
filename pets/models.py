@@ -5,6 +5,10 @@ from django.db import models
 
 class Pet(models.Model):
 
+    id = models.AutoField(
+        'Идентификатор',
+        primary_key=True)
+
     type = models.CharField(
         'Вид',
         max_length=30,
