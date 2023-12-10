@@ -1,0 +1,15 @@
+<body>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
+    <h1 class="form_title">Вход</h1>
+    <div class="form__group">
+      <input type="text" formControlName="username" class="form__input" placeholder=" ">
+      <label class="form__label">Ник</label>
+    </div>
+    <div class="form__group">
+      <input type="password" formControlName="password" class="form__input" placeholder=" ">
+      <label for="password" class="form__label">Пароль</label>
+    </div>
+    <button type="submit" class="form__button">Войти</button>
+    <button class="registration__button" (click)="goToRegistration()">Регистрация</button>
+  </form>
+</body>

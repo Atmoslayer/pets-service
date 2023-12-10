@@ -1,0 +1,26 @@
+<body>
+  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="form">
+    <h1 class="form_title">Регистрация</h1>
+    <div class="form__group">
+      <input type="text" formControlName="username" class="form__input" placeholder=" ">
+      <label class="form__label">Ник</label>
+    </div>
+    <div class="form__group">
+      <input type="text" formControlName="first_name" class="form__input" placeholder=" ">
+      <label class="form__label">Имя</label>
+    </div>
+    <div class="form__group">
+      <input type="text" formControlName="last_name" class="form__input" placeholder=" ">
+      <label class="form__label">Фамилия</label>
+    </div>
+    <div class="form__group">
+      <input type="text" formControlName="email" class="form__input" placeholder=" ">
+      <label class="form__label">Почта</label>
+    </div>
+    <div class="form__group">
+      <input type="password" formControlName="password" class="form__input" placeholder=" ">
+      <label for="password" class="form__label">Пароль</label>
+    </div>
+    <button type="submit" class="form__button">Войти</button>
+  </form>
+</body>

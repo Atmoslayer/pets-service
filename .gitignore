@@ -11,6 +11,10 @@ __pycache__/
 # Distribution / packaging
 .Python
 env/
+frontend/.angular
+frontend/.vscode
+frontend/.node_modules
+frontend/README.md
 db.sqlite3/
 data.json/
 .parcel-cache/
