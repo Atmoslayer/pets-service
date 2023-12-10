@@ -59,4 +59,12 @@ export class RegistrationComponent {
     )
   }
 
+  goToLogin($check: string = ''): void {
+    const navigationDetails: string[] = ['/login'];
+    if($check.length) {
+      navigationDetails.push($check);
+    }
+    this.router.navigate(navigationDetails);
+  }
+
 }
