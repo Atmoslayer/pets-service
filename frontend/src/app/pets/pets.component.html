@@ -33,7 +33,7 @@
       <input type="text" [(ngModel)]="selectedPet.age" class="form__input" placeholder=" ">
       <label class="form__label">Возраст</label>
     </div>
-    <button *ngIf="selectedPet.id != -2" class="edit__button" (click)="updatePet();">Редактировать</button>
+    <button *ngIf="selectedPet.id != -2" class="edit__button" (click)="updatePet(); reloadPage()">Редактировать</button>
     <button *ngIf="selectedPet.id == -2" class="create__button" (click)="createPet(); reloadPage()">Создать</button>
     <button *ngIf="selectedPet.id != -2" class="delete__button" (click)="deletePet(); reloadPage()">Удалить</button>
     <button class="exit__button" type="button" (click)="logout(); goToLogin()">Выйти</button>
