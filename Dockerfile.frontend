@@ -1,7 +1,6 @@
 FROM node:16.16.0 AS build
-WORKDIR /pets-service
-COPY frontend/package*.json ./
-RUN npm install
-RUN npx ngcc --properties ec2023 browser module main --first-only --create-ivy-enry-points
+WORKDIR /pets-service/frontend
 COPY . .
-EXPOSE 4200
+RUN npm install
+RUN npm install -g @angular/cli@16.1.0
+COPY . .
