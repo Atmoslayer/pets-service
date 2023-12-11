@@ -17,12 +17,13 @@ services:
       dockerfile: Dockerfile.frontend
       context: .
     container_name: frontend
+    restart: always
     ports:
       - 4200:4200
     volumes:
       - /opt/pets-service/staticfiles/:/pets-service/staticfiles/
     command: >
-      bash -c "ng serve"
+      bash -c "cd /frontend $$ ng serve"
 
 
   backend:
@@ -44,4 +45,4 @@ services:
       postgres:
         condition: service_started
     command: >
-      bash -c "gunicorn -w 5 -b 0.0.0.0:8080 star_burger.wsgi:application"
+      bash -c "gunicorn -w 5 -b 0.0.0.0:8080 pets_service.wsgi:application"
