@@ -1,0 +1,45 @@
+version: "3.3"
+services:
+  postgres:
+    image: postgres:14.9
+    container_name: ${POSTGRES_HOST}
+    restart: always
+    volumes:
+      - ${PGDATA}:${PGDATA}
+    ports:
+      - 5432:5432
+    env_file:
+      - .env
+
+
+  frontend:
+    build:
+      dockerfile: Dockerfile.frontend
+      context: .
+    container_name: frontend
+    volumes:
+      - /opt/star-burger/staticfiles/:/star-burger/staticfiles/
+    command: >
+      bash -c "ng serve"
+
+
+  backend:
+    build:
+      dockerfile: Dockerfile.backend
+      context: .
+    container_name: backend
+    restart: always
+    volumes:
+      - /opt/star-burger/staticfiles/:/star-burger/staticfiles/
+      - /opt/star-burger/media/:/star-burger/media/
+    ports:
+      - 8081:8081
+    env_file:
+      - .env
+    depends_on:
+      frontend:
+        condition: service_started
+      postgres:
+        condition: service_started
+    command: >
+      bash -c "gunicorn -w 5 -b 0.0.0.0:8080 star_burger.wsgi:application"
