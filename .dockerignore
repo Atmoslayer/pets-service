@@ -7,6 +7,9 @@ __pycache__
 docker-compose.yml
 Dockerfile.backend
 Dockerfile.frontend
-deploy_star_burger.sh
+deploy_pets_servicer.sh
 db.sqlite3
-data.json
+node_modules
+**/.vscode
+**/.editconfig
+
