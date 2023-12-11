@@ -1,6 +1,6 @@
 FROM node:16.16.0 AS build
-WORKDIR /pets-service/frontend
-COPY package*.json ./
+WORKDIR /pets-service/frontend/
+COPY /frontend/package*.json ./
 RUN npm install
 RUN npx ngcc --properties ec2023 browser module main --first-only --create-ivy-enry-points
 COPY . .
