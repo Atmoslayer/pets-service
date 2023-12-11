@@ -17,6 +17,8 @@ services:
       dockerfile: Dockerfile.frontend
       context: .
     container_name: frontend
+    ports:
+      - 4200:4200
     volumes:
       - /opt/star-burger/staticfiles/:/star-burger/staticfiles/
     command: >
