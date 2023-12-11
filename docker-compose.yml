@@ -23,7 +23,7 @@ services:
     volumes:
       - /opt/pets-service/staticfiles/:/pets-service/staticfiles/
     command: >
-      bash -c "cd /frontend && ng serve"
+      bash -c "npm run build"
 
 
   backend:
