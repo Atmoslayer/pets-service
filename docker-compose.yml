@@ -21,9 +21,8 @@ services:
     ports:
       - 4200:4200
     volumes:
-      - /opt/pets-service/staticfiles/:/pets-service/staticfiles/
-    command: >
-      bash -c "npm run build"
+      - .:/frontend
+      - /frontend/node_modules
 
 
   backend:
