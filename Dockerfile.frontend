@@ -4,4 +4,4 @@ COPY /frontend/package*.json ./
 RUN npm install
 RUN npx ngcc --properties ec2023 browser module main --first-only --create-ivy-enry-points
 COPY . .
-RUN npm run build
+RUN cd /frontend && npm run build
