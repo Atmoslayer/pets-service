@@ -31,7 +31,7 @@ class PetViewSet(viewsets.ModelViewSet):
             return None
 
 
-class CreateUserAPpiView(CreateAPIView):
+class CreateUserAPIView(CreateAPIView):
     model = User
     permission_classes = [
         permissions.AllowAny
