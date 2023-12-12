@@ -11,7 +11,7 @@ export class ApiService {
   authorized_user = JSON.parse(localStorage.getItem("currentUser") || '{}')
   user_token = this.authorized_user.token
 
-  baseurl = "http://127.0.0.1:8080/";
+  baseurl = "http://127.0.0.1:8000/";
   httpHeaders = new HttpHeaders({'Content-Type': 'application/json', 'Authorization': 'token' + ' ' + this.user_token});
 
   constructor(private http: HttpClient, private errorService: ErrorService) { }
@@ -78,7 +78,7 @@ export class ApiService {
       password: password
     };
     return this.http.post(this.baseurl + 'api/registration/', body,
-      {headers: this.httpHeaders});
+      {headers: {'Content-Type': 'application/json'}});
   }
 
 
