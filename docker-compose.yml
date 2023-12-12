@@ -37,7 +37,7 @@ services:
       - /opt/pets-service/staticfiles/:/pets-service/staticfiles/
       - /opt/pets-service/media/:/pets-service/media/
     ports:
-      - 8000:8000
+      - 8080:8080
     env_file:
       - .env
     depends_on:
@@ -46,4 +46,4 @@ services:
       postgres:
         condition: service_started
     command: >
-      bash -c "gunicorn -w 5 -b 0.0.0.0:8000 pets_viewer.wsgi:application"
+      bash -c "gunicorn -w 5 -b 0.0.0.0:8080 pets_viewer.wsgi:application"
