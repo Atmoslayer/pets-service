@@ -50,13 +50,7 @@ export class RegistrationComponent {
       }
     )
 
-    this.apiService.login(this.currentForm['username'].value, this.currentForm['password'].value).pipe(first()).subscribe(
-      data => {
-        console.log(data);
-        const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-        this.router.navigateByUrl(returnUrl);
-      }
-    )
+    this.goToLogin()
   }
 
   goToLogin($check: string = ''): void {
