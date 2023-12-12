@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
-import {map, Observable, throwError} from "rxjs";
+import {catchError, map, Observable, throwError} from "rxjs";
+import {ErrorService} from "./error.service";
 
 @Injectable({
   providedIn: 'root'
@@ -10,22 +11,18 @@ export class ApiService {
   authorized_user = JSON.parse(localStorage.getItem("currentUser") || '{}')
   user_token = this.authorized_user.token
 
-  baseurl = "http://127.0.0.1:8000/";
+  baseurl = "http://127.0.0.1:8080/";
   httpHeaders = new HttpHeaders({'Content-Type': 'application/json', 'Authorization': 'token' + ' ' + this.user_token});
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private errorService: ErrorService) { }
 
   private handleError(error: HttpErrorResponse) {
   if (error.status === 0) {
-    // A client-side or network error occurred. Handle it accordingly.
     console.error('An error occurred:', error.error);
   } else {
-    // The backend returned an unsuccessful response code.
-    // The response body may contain clues as to what went wrong.
     console.error(
       `Backend returned code ${error.status}, body was: `, error.error);
   }
-  // Return an observable with a user-facing error message.
   return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 
@@ -51,6 +48,7 @@ export class ApiService {
     };
     return this.http.put(this.baseurl + 'api/pets/' + pet.id + '/', body,
       {headers: this.httpHeaders});
+    catchError(this.handleError.bind(this))
   }
 
   createPet(pet: any): Observable<any> {
